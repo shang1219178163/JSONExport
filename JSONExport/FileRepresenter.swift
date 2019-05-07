@@ -121,6 +121,16 @@ class FileRepresenter{
         fileContent = fileContent.replacingOccurrences(of: lowerCaseModelName, with:className.lowercaseFirstChar())
         fileContent = fileContent.replacingOccurrences(of: modelName, with:className)
         fileContent += lang.modelEnd
+        
+         //定制
+        if lang.displayLangName.contains("HandyJSON") {
+            fileContent = fileContent.replacingOccurrences(of: " : HandyJSON", with: ": NSObject,HandyJSON")
+            fileContent = fileContent.replacingOccurrences(of: "var", with: "@objc var")
+            fileContent = fileContent.replacingOccurrences(of: "Int?", with: "Int = 0")
+            fileContent = fileContent.replacingOccurrences(of: "CGFloat?", with: "CGFloat = 0")
+            fileContent = fileContent.replacingOccurrences(of: "Double?", with: "Double = 0")
+            fileContent = fileContent.replacingOccurrences(of: "Bool?", with: "Bool = false")
+        }
         return fileContent
     }
     
