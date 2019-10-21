@@ -37,7 +37,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        let folderPath = "/Users/shang/Downloads";
+        let fileAtPath = folderPath + "/BNRootModel.h";
+        let fileContent = "www微微儿二二二无";
         
+        do {
+            try fileContent.write(toFile: fileAtPath, atomically: false, encoding: String.Encoding.utf8)
+        } catch let error1 as NSError {
+            let alert = NSAlert(error: error1)
+            alert.runModal()
+        }
+     
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
