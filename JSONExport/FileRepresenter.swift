@@ -124,13 +124,22 @@ class FileRepresenter{
         
          //定制
         if lang.displayLangName.contains("HandyJSON") {
-            fileContent = fileContent.replacingOccurrences(of: " : HandyJSON", with: ": NSObject,HandyJSON")
-            fileContent = fileContent.replacingOccurrences(of: "var", with: "@objc var")
-            fileContent = fileContent.replacingOccurrences(of: "Int?", with: "Int = 0")
-            fileContent = fileContent.replacingOccurrences(of: "CGFloat?", with: "CGFloat = 0")
-            fileContent = fileContent.replacingOccurrences(of: "Double?", with: "Double = 0")
-            fileContent = fileContent.replacingOccurrences(of: "Bool?", with: "Bool = false")
+            fileContent = fileContent.replacingOccurrences(of: "class", with: "@objcMembers class")
+            fileContent = fileContent.replacingOccurrences(of: " : HandyJSON", with: ": NSObject, HandyJSON")
+//            fileContent = fileContent.replacingOccurrences(of: "var", with: "@objc var")
         }
+
+        fileContent = fileContent.replacingOccurrences(of: "Int?", with: "Int = 0")
+        fileContent = fileContent.replacingOccurrences(of: "Float?", with: "Float = 0")
+        fileContent = fileContent.replacingOccurrences(of: "Double?", with: "Double = 0")
+        fileContent = fileContent.replacingOccurrences(of: "Bool?", with: "Bool = false")
+        
+        fileContent = fileContent.replacingOccurrences(of: "Int!", with: "Int = 0")
+        fileContent = fileContent.replacingOccurrences(of: "Float!", with: "Float = 0")
+        fileContent = fileContent.replacingOccurrences(of: "Double!", with: "Double = 0")
+        fileContent = fileContent.replacingOccurrences(of: "Bool!", with: "Bool = false")
+        
+        fileContent = fileContent.replacingOccurrences(of: "String!", with: "String")
         return fileContent
     }
     
